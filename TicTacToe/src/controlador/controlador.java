@@ -44,7 +44,7 @@ public class controlador implements ActionListener{
         this.vista.pos22.addActionListener(this);
     }
     
-    //Función que se encarga de manar la posicion que se preciono y ademas coloca la marca en la vista
+    //Función que se encarga de mandar la posicion que se preciono y ademas coloca la marca en la vista
     @Override
     public void actionPerformed(ActionEvent e) {
          Object boton = e.getSource();
