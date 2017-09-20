@@ -41,9 +41,8 @@ public class modelo {
         this.turno = 1;
     }
     
-    //dado una posicion y segun el turno que corresponda
-    //coloca la marca "X" o "O" en el tablero
-    //Salida: La marca que se coloco en la matriz
+    //Resive la posición de donde el jugador apreto, por medio del controlador 
+    //Coloca la marca en la matriz ya sea X o O 
     public String ColocarMovimiento(int posicion)
     {
         String jugada="";
@@ -104,17 +103,20 @@ public class modelo {
         }
         return marca;
     }
-
+    
+    //Retorna el error
     public boolean get_error()
     {
         return this.error;
     }
 
+    //Retorna el turno del jugador
     public String get_turno()
     {
         return (this.turno==1)? "Turno: X":"Turno: O";
     }
 
+    //Retorna el ganador de la partida
     public byte ganador()
     {
         return this.ganador;
@@ -123,7 +125,7 @@ public class modelo {
     //funcion que determina quien gano la partida
     public boolean gano( String matriz[][], String marca )
     {
-        //busqueda de ganador por filas
+        //busqueda la jugada ganadora por fila
         for ( int i = 0 ; i < matriz.length ; i++ )
         {
             byte count=0;
@@ -132,7 +134,7 @@ public class modelo {
             if( count == 3)
                  return true;
         }
-        //busqueda de ganador por columnas
+        //busqueda la jugada ganadora por columnas
         for ( int j = 0 ; j < matriz.length ; j++ )
         {
             byte count=0;
@@ -141,7 +143,7 @@ public class modelo {
             if( count == 3)
                  return true;
         }
-        //diagonales
+        //busqueda la jugada ganadora por diagonales
         if(  matriz[0][0].equals(marca) && matriz[1][1].equals(marca) && matriz[2][2].equals(marca) )
             return true;
 
@@ -151,7 +153,7 @@ public class modelo {
         return false;
     }
 
-    //Funcion que determina si se puede continuar jugando
+    //Funcion que determina si hay empate o si el juego continua 
     private boolean empate()
     {
         for ( int i = 0 ; i < tableroJuego.length ; i++ )
@@ -160,5 +162,5 @@ public class modelo {
                     return false;
         return true;
     }
-    
+
 }
