@@ -5,6 +5,9 @@
  */
 package tictactoe;
 
+import vista.vistaJuego;
+import controlador.controlador;
+import modelo.modelo;
 /**
  *
  * @author darin
@@ -16,6 +19,12 @@ public class TicTacToe {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+                 //nuevas instancias de clase
+        modelo modelo = new modelo();
+        vistaJuego vista = new vistaJuego();
+        controlador controlador = new controlador( vista , modelo );
+        controlador.iniciarTablero();
+        vista.setVisible(true);
     }
     
 }
