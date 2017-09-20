@@ -137,14 +137,14 @@ public class vistaJuego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondoJuego;
-    private javax.swing.JButton pos00;
-    private javax.swing.JButton pos01;
-    private javax.swing.JButton pos02;
-    private javax.swing.JButton pos10;
-    private javax.swing.JButton pos11;
-    private javax.swing.JButton pos12;
-    private javax.swing.JButton pos20;
-    private javax.swing.JButton pos21;
-    private javax.swing.JButton pos22;
+    public javax.swing.JButton pos00;
+    public javax.swing.JButton pos01;
+    public javax.swing.JButton pos02;
+    public javax.swing.JButton pos10;
+    public javax.swing.JButton pos11;
+    public javax.swing.JButton pos12;
+    public javax.swing.JButton pos20;
+    public javax.swing.JButton pos21;
+    public javax.swing.JButton pos22;
     // End of variables declaration//GEN-END:variables
 }
