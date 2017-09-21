@@ -51,7 +51,9 @@ public class modelo {
             jugada = marcar(posicion , this.marcaX);
             //si no se pudo marcar => continua con su turno
             turno = 2;
-            if ( gano(this.tableroJuego, this.marcaX) )
+            if ( ganoFila(this.tableroJuego, this.marcaX)|| 
+                    ganoColumna(this.tableroJuego, this.marcaX)|| 
+                    ganoDiagonal(this.tableroJuego, this.marcaX))
                 this.ganador=1;
             else if ( empate() )
                 this.ganador=3;
@@ -60,7 +62,9 @@ public class modelo {
         {
             jugada =  marcar(posicion , this.marcaO);
             turno = 1;
-            if ( gano(this.tableroJuego, this.marcaO) )
+            if ( ganoFila(this.tableroJuego, this.marcaO)|| 
+                    ganoColumna(this.tableroJuego, this.marcaX)|| 
+                    ganoDiagonal(this.tableroJuego, this.marcaX))
                 this.ganador=2;
             else if ( empate() )
                 this.ganador=3;
@@ -123,8 +127,7 @@ public class modelo {
     }
 
     //funcion que determina quien gano la partida
-    public boolean gano( String matriz[][], String marca )
-    {
+    public boolean ganoFila( String matriz[][], String marca ){
         //busqueda la jugada ganadora por fila
         for ( int i = 0 ; i < matriz.length ; i++ )
         {
@@ -134,6 +137,10 @@ public class modelo {
             if( count == 3)
                  return true;
         }
+        return false;
+    }
+    
+    public boolean ganoColumna(String matriz[][], String marca){
         //busqueda la jugada ganadora por columnas
         for ( int j = 0 ; j < matriz.length ; j++ )
         {
@@ -143,13 +150,17 @@ public class modelo {
             if( count == 3)
                  return true;
         }
+        return false;
+    }
+    
+    public boolean ganoDiagonal(String matriz[][],String marca){
         //busqueda la jugada ganadora por diagonales
         if(  matriz[0][0].equals(marca) && matriz[1][1].equals(marca) && matriz[2][2].equals(marca) )
             return true;
 
         if(  matriz[0][2].equals(marca) && matriz[1][1].equals(marca) && matriz[2][0].equals(marca) )
             return true;
-
+        
         return false;
     }
 
