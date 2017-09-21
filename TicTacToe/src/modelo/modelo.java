@@ -43,12 +43,25 @@ public class modelo {
     
     //Resive la posición de donde el jugador apreto, por medio del controlador 
     //Coloca la marca en la matriz ya sea X o O 
-    public String ColocarMovimiento(int posicion)
-    {
+    public String ColocarMovimiento(int posicion){
         String jugada="";
+        if(turno == 1){
+            jugada = marcar(posicion , this.marcaX);
+            verificarGanador();
+        }
+        else{
+            jugada =  marcar(posicion , this.marcaO);
+            verificarGanador();
+        }
+        return jugada;
+    }
+    
+    
+    //Se encarga de verificar si hay un ganador o si el juego 
+    //continua por un empate despues de poner la marca 
+    public void verificarGanador(){
         if(turno==1)
         {
-            jugada = marcar(posicion , this.marcaX);
             //si no se pudo marcar => continua con su turno
             turno = 2;
             if ( ganoFila(this.tableroJuego, this.marcaX)|| 
@@ -58,18 +71,15 @@ public class modelo {
             else if ( empate() )
                 this.ganador=3;
         }
-        else
-        {
-            jugada =  marcar(posicion , this.marcaO);
+        else if(turno == 2){
             turno = 1;
             if ( ganoFila(this.tableroJuego, this.marcaO)|| 
-                    ganoColumna(this.tableroJuego, this.marcaX)|| 
-                    ganoDiagonal(this.tableroJuego, this.marcaX))
+                    ganoColumna(this.tableroJuego, this.marcaO)|| 
+                    ganoDiagonal(this.tableroJuego, this.marcaO))
                 this.ganador=2;
             else if ( empate() )
                 this.ganador=3;
         }
-        return jugada;
     }
     
     //Coloca la marca del jugador
